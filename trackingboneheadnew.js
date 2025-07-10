@@ -99,9 +99,9 @@ class BoneHeadBasedEnemyDetector {
     };
 
     // Các cấu hình khác
-       this.sensitivity = options.sensitivity || 0.5;
+       this.sensitivity = options.sensitivity || 5.0;
     this.smoothingFactor = options.smoothingFactor || 0.3;
-    this.headLockRange = options.headLockRange || 200;
+    this.headLockRange = options.headLockRange || 9999;
 
     this.lockedTarget = null;
     this.targetHistory = [];
