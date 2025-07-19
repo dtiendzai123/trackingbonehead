@@ -255,7 +255,10 @@ class BoneHeadBasedEnemyDetector {
 }
 
 // ===== Demo BoneHeadBasedEnemyDetector với dữ liệu thật =====
-
+const GamePackages = {
+  GamePackage1: "com.dts.freefireth",
+  GamePackage2: "com.dts.freefiremax"
+};
 const demoBoneHeads = [
   {
     matrix: {
