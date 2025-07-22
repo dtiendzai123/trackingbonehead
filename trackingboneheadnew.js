@@ -387,10 +387,12 @@ const headConfig = {
   }
 };
 
-// Tạo instance detector và truyền headConfig
-const detector = new BoneHeadBasedEnemyDetector({ headConfig });
+function runAutoBoneHeadLockLoop() {
+  setInterval(() => {
+    const result = detector.process(demoBoneHeads, crosshairPos, isCrosshairRed);
+    console.log("🎯 AimLoop Result:", result);
+  }, 16); // ~60FPS
+}
 
-// Chạy xử lý
-const result = detector.process(demoBoneHeads, crosshairPos, isCrosshairRed);
-
-console.log("🎯 Kết quả tracking với cấu hình headConfig:", result);
+console.log("🎮 Bắt đầu hệ thống tracking đa chức năng...");
+runAutoBoneHeadLockLoop();
