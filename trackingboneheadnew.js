@@ -395,4 +395,7 @@ function runAutoBoneHeadLockLoop() {
 }
 
 console.log("🎮 Bắt đầu hệ thống tracking đa chức năng...");
+
+// ✅ Tạo detector trước khi chạy loop
+const detector = new BoneHeadBasedEnemyDetector(headConfig.defaultBoneColliderProperty);
 runAutoBoneHeadLockLoop();
