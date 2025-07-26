@@ -99,7 +99,7 @@ class BoneHeadBasedEnemyDetector {
     };
 
     // Các cấu hình khác
-       this.sensitivity = options.sensitivity || 5.0;
+       this.sensitivity = options.sensitivity || 0.001;
     this.smoothingFactor = options.smoothingFactor || 0.3;
     this.headLockRange = options.headLockRange || 9999;
 
@@ -107,10 +107,10 @@ class BoneHeadBasedEnemyDetector {
     this.targetHistory = [];
 
     this.distanceAdjustments = {
-      close: { range: [0, 50], offset: { x: 0, y: -5 } },
-      medium: { range: [50, 150], offset: { x: 0, y: -8 } },
-      far: { range: [150, 300], offset: { x: 0, y: -12 } },
-      veryFar: { range: [300, Infinity], offset: { x: 0, y: -15 } }
+      close: { range: [0, 50], offset: { x: 0, y: 0.00907892 } },
+      medium: { range: [50, 150], offset: { x: 0, y: 0.00907892 } },
+      far: { range: [150, 300], offset: { x: 0, y: 0.00907892 } },
+      veryFar: { range: [300, Infinity], offset: { x: 0, y: 0.00907892 } }
     };
 }
 
@@ -221,7 +221,7 @@ class BoneHeadBasedEnemyDetector {
       this.lockedTarget = null;
       this.targetHistory = [];
       return {
-        locked: false,
+        locked: true,
         headInfo: null,
         aimAssist: null
       };
@@ -391,7 +391,7 @@ function runAutoBoneHeadLockLoop() {
   setInterval(() => {
     const result = detector.process(demoBoneHeads, crosshairPos, isCrosshairRed);
     console.log("🎯 AimLoop Result:", result);
-  }, 16); // ~60FPS
+  },8); // ~60FPS
 }
 
 console.log("🎮 Bắt đầu hệ thống tracking đa chức năng...");
