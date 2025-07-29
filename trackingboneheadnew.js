@@ -32,21 +32,21 @@ this.z + (target.z - this.z) * alpha
 const AimbotConfig = {
 // Cài đặt tracking
 smoothness: 0.85,           // Độ mượt của việc theo dõi (0-1)
-predictionTime: 0.12,       // Thời gian dự đoán chuyển động
-maxTrackingDistance: 150,   // Khoảng cách tối đa để track
-fovLimit: 90,              // Giới hạn FOV để target
+predictionTime: 0.01,       // Thời gian dự đoán chuyển động
+maxTrackingDistance: 99999,   // Khoảng cách tối đa để track
+fovLimit: 360,              // Giới hạn FOV để target
 
 // Cài đặt bắn kích hoạt
-fireActivationDuration: 3000,  // Thời gian active sau khi bắn (ms)
+fireActivationDuration: 1000,  // Thời gian active sau khi bắn (ms)
 burstMode: true,           // Chế độ bắn liên tiếp
-burstCount: 3,             // Số viên bắn trong burst
-burstDelay: 150,           // Delay giữa các burst (ms)
+burstCount: 200,             // Số viên bắn trong burst
+burstDelay: 0,           // Delay giữa các burst (ms)
 
 // Cài đặt bone targeting
 
 preferredBones: ['bone_Head', 'bone_Neck', 'bone_Chest'],
 
-headShotMultiplier: 2.5,   // Hệ số ưu tiên headshot
+headShotMultiplier: 10.0,   // Hệ số ưu tiên headshot
 
 // Cài đặt anti-recoil
 recoilCompensation: true,
