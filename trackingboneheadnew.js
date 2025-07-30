@@ -58,11 +58,6 @@ recoilPattern: [           // Pattern giật súng chuẩn
 
 // === Game Package Detection ===
 
-const GamePackages = {
-  GamePackage1: "com.dts.freefireth",
-  GamePackage2: "com.dts.freefiremax"
-};
-
 // === BoneHeadBasedEnemyDetector tích hợp ===
 
 class BoneHeadBasedEnemyDetector {
@@ -182,9 +177,10 @@ this.distanceAdjustments = {
   far: { range: [150, 300], offset: { x: 0, y: 0.00907892 } },
   veryFar: { range: [300, Infinity], offset: { x: 0, y: 0.00907892 } }
 };
-
-
 }
+
+
+
 
 computeWorldPosition(matrix, bindpose) {
 const p = bindpose.position;
@@ -671,6 +667,7 @@ if (detectionResult.locked && detectionResult.headInfo) {
   if (bestTarget && this.isValidTarget(bestTarget)) {
     this.acquireTarget(bestTarget);
     this.aimAtTarget();
+    this.aimAtTarget();
   }
 }
 
@@ -843,7 +840,7 @@ const GamePackages = {
 // ==================== ENHANCED ENEMY DETECTION SYSTEM ====================
 const EnemyDetectionSystem = {
   enemies: new Map(),
-  maxDistance: 100,
+  maxDistance: 99999,
   
   // Phát hiện enemy trong tầm
   scanForEnemies() {
@@ -851,18 +848,18 @@ const EnemyDetectionSystem = {
     const detectedEnemies = [
       {
         id: "enemy_001",
-        position: { x: 5.2, y: 1.6, z: 12.0 },
+        position: { x: -0.0456970781, y: -0.004478302, z: -0.0200432576 },
         health: 100,
         isVisible: true,
-        distance: 12.5,
+        distance: 99999.0,
         velocity: { x: 0.1, y: 0, z: -0.05 }
       },
       {
         id: "enemy_002", 
-        position: { x: -3.8, y: 1.5, z: 8.2 },
+        position: { x: -0.0456970781, y: -0.004478302, z: -0.0200432576 },
         health: 80,
         isVisible: true,
-        distance: 9.1,
+        distance: 99999.0,
         velocity: { x: 0, y: 0, z: 0.2 }
       }
     ];
@@ -998,7 +995,7 @@ const EnhancedHeadTracker = {
   currentTarget: null,
   lockEnabled: true,
   smoothing: 0.85,
-  predictionTime: 0.1, // Dự đoán 100ms trước
+  predictionTime: 0.001, // Dự đoán 100ms trước
   
   // Bone Head configuration
   boneHeadConfig: {
@@ -1008,7 +1005,7 @@ const EnhancedHeadTracker = {
       e20: -1.0, e21: 2.84512817E-06, e22: -1.72951931E-13, e23: 0.0,
       e30: 0.0, e31: 0.0, e32: 0.0, e33: 1.0
     },
-    offset: { x: 0, y: 0.05, z: 0 } // Offset để ngắm chính xác hơn
+    offset: { x:  -0.04089227, y: 0.00907892, z: 0.02748467 } // Offset để ngắm chính xác hơn
   },
   
   // Ma trận toán học
@@ -1325,7 +1322,7 @@ console.log("🎮 Initializing Advanced Head Tracking System...");
 
 // Cấu hình mặc định
 AimBotController.configure({
-  maxDistance: 150,
+  maxDistance: 99999,
   predictionTime: 0.12,
   smoothing: 0.9,
   updateRate: 60
@@ -1358,12 +1355,3 @@ AimBotController.configure({
 */
 
 // Export cho sử dụng bên ngoài
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    AimBotController,
-    MasterHeadTrackingSystem,
-    EnemyDetectionSystem,
-    EnhancedHeadTracker,
-    RecoilCompensation
-  };
-}
